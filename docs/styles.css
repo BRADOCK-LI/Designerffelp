@@ -658,16 +658,3 @@ a:focus-visible,button:focus-visible{
   }
   .studio-strip>div:last-child{border-bottom:0}
 }
-
-/* Emergency image visibility hardening */
-.has-cover{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
-.visual-senador.has-cover{background-image:url("./assets/senador-side.jpg?v=20260922-4")!important}
-.visual-puracai.has-cover{background-image:url("./assets/puracai.jpg?v=20260922-4")!important}
-.has-cover .cover-photo{
-  z-index:2!important;
-  opacity:1!important;
-  visibility:visible!important;
-  filter:none!important;
-}
-.has-cover .cover-shade{z-index:3!important;pointer-events:none}
-.has-cover .work-index,.has-cover .project-type,.has-cover .view-project{z-index:4!important}
