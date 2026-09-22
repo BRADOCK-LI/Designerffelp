@@ -29,9 +29,20 @@ jobs:
         shell: bash
         run: |
           set -e
-          ffmpeg -y -loglevel error -i docs/assets/senador-side.webp -q:v 2 docs/assets/senador-side.jpg
-          ffmpeg -y -loglevel error -i docs/assets/puracai.webp -q:v 2 docs/assets/puracai.jpg
-          file docs/assets/senador-side.webp docs/assets/puracai.webp docs/assets/senador-side.jpg docs/assets/puracai.jpg
+          file docs/assets/senador-side.webp docs/assets/puracai.webp
+          python3 -m pip install --disable-pip-version-check --quiet Pillow
+          python3 - <<'PY'
+          from PIL import Image
+          pairs = [
+              ("docs/assets/senador-side.webp", "docs/assets/senador-side.jpg"),
+              ("docs/assets/puracai.webp", "docs/assets/puracai.jpg"),
+          ]
+          for src, dst in pairs:
+              with Image.open(src) as im:
+                  print(src, im.format, im.size, im.mode)
+                  im.convert("RGB").save(dst, "JPEG", quality=92, optimize=True)
+          PY
+          file docs/assets/senador-side.jpg docs/assets/puracai.jpg
           test -s docs/assets/senador-side.jpg
           test -s docs/assets/puracai.jpg
       - name: Upload artifact
