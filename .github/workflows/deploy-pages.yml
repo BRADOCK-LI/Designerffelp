@@ -25,15 +25,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Rebuild optimized portfolio images
-        shell: bash
-        run: |
-          set -e
-          base64 -d .github/image-data/senador-side.b64 > docs/assets/senador-side.jpg
-          base64 -d .github/image-data/puracai.b64 > docs/assets/puracai.jpg
-          file docs/assets/senador-side.jpg docs/assets/puracai.jpg
-          test -s docs/assets/senador-side.jpg
-          test -s docs/assets/puracai.jpg
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
