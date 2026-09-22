@@ -547,3 +547,120 @@ button{font:inherit}
   .site-footer{padding:24px 20px;align-items:flex-start;flex-direction:column}
   .footer-meta{width:100%;justify-content:space-between}
 }
+
+/* Portfolio cover system */
+.work-card{min-width:0}
+.work-card .work-visual{background-color:#0b0b0b}
+.has-cover{isolation:isolate}
+.cover-photo{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transform:scale(1.001);
+  transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .5s ease;
+}
+/* Real cover filenames: upload these files into docs/assets/ to activate automatically. */
+.cover-senador{
+  background-image:url("./assets/senador-side.webp");
+  background-color:#0b0b0b;
+}
+.cover-puracai{
+  background-image:url("./assets/puracai.webp");
+  background-color:#271040;
+}
+.cover-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.02) 42%,rgba(0,0,0,.48));
+  transition:background .4s ease;
+}
+.work-card:hover .cover-photo{transform:scale(1.035);filter:saturate(1.05) contrast(1.02)}
+.work-card:hover .cover-shade{background:linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.01) 42%,rgba(0,0,0,.35))}
+.project-type{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  z-index:3;
+  font-family:"DM Mono",monospace;
+  font-size:9px;
+  line-height:1.4;
+  color:rgba(255,255,255,.72);
+  text-transform:uppercase;
+  letter-spacing:.11em;
+}
+.has-cover .work-index,
+.has-cover .view-project{
+  color:rgba(255,255,255,.82);
+  text-shadow:0 1px 18px rgba(0,0,0,.35);
+}
+.view-static{color:#6d6d6d}
+.work-card:not(a) .work-visual{cursor:default}
+.work-card .work-meta{transition:padding-left .25s ease}
+.work-card:hover .work-meta{padding-left:8px}
+
+/* Studio principles strip */
+.studio-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding-top:0;
+  padding-bottom:0;
+}
+.studio-strip>div{
+  min-width:0;
+  min-height:170px;
+  padding:30px 26px 28px 0;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.studio-strip>div:not(:first-child){padding-left:26px}
+.studio-strip>div:last-child{border-right:0}
+.studio-strip span{
+  margin-bottom:auto;
+  font-family:"DM Mono",monospace;
+  font-size:9px;
+  color:#555;
+}
+.studio-strip strong{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:20px;
+  letter-spacing:-.025em;
+}
+.studio-strip small{margin-top:7px;color:#666;font-size:12px;line-height:1.45}
+
+/* Better keyboard focus */
+a:focus-visible,button:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:4px;
+  border-radius:4px;
+}
+
+@media (max-width:980px){
+  .studio-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .studio-strip>div:nth-child(2){border-right:0}
+  .studio-strip>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .studio-strip>div:nth-child(3){padding-left:0}
+}
+
+@media (max-width:640px){
+  .cover-photo{background-position:center}
+  .project-type{left:14px;bottom:14px}
+  .work-index{top:14px;left:14px}
+  .view-project{top:14px;right:14px}
+  .studio-strip{grid-template-columns:1fr}
+  .studio-strip>div,
+  .studio-strip>div:not(:first-child){
+    min-height:132px;
+    padding:22px 0;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .studio-strip>div:last-child{border-bottom:0}
+}
