@@ -661,8 +661,8 @@ a:focus-visible,button:focus-visible{
 
 /* Emergency image visibility hardening */
 .has-cover{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
-.visual-senador.has-cover{background-image:url("https://raw.githubusercontent.com/BRADOCK-LI/Designerffelp/main/docs/assets/senador-side.webp?v=20260922-3")!important}
-.visual-puracai.has-cover{background-image:url("https://raw.githubusercontent.com/BRADOCK-LI/Designerffelp/main/docs/assets/puracai.webp?v=20260922-3")!important}
+.visual-senador.has-cover{background-image:url("./assets/senador-side.jpg?v=20260922-4")!important}
+.visual-puracai.has-cover{background-image:url("./assets/puracai.jpg?v=20260922-4")!important}
 .has-cover .cover-photo{
   z-index:2!important;
   opacity:1!important;
