@@ -3,147 +3,232 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Felpdesigner — branding, direção de arte, social media e motion design." />
+  <meta name="description" content="Felpdesigner — estúdio independente de design, branding, direção de arte, social media, cover art e motion." />
   <meta name="theme-color" content="#050505" />
-  <title>Felpdesigner — Brand & Visual Design</title>
+  <meta property="og:title" content="Felpdesigner — Independent Creative Studio" />
+  <meta property="og:description" content="Identidades, campanhas e universos visuais para marcas, artistas e projetos autorais." />
+  <title>Felpdesigner — Independent Creative Studio</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Felpdesigner — início">FELP<span>DESIGNER</span></a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">MENU</button>
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#projetos">Projetos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#sobre">Sobre</a>
-      <a class="nav-cta" href="#contato">Contato</a>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand-lockup" href="#top" aria-label="Felpdesigner — início">
+      <img src="./assets/logo-white.svg" alt="" />
+      <span>FELP<em>DESIGNER</em></span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-button>MENU</button>
+
+    <nav class="nav" aria-label="Navegação principal" data-menu>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="https://wa.me/5548920023095?text=me%20conta%20mais" target="_blank" rel="noopener">Start a project ↗</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="eyebrow">Branding • Social • Motion • Art Direction</div>
-      <h1>Design para marcas que querem <em>ser lembradas.</em></h1>
-      <p>Identidade visual, campanhas e conteúdo com direção de arte forte, clareza e presença.</p>
-      <div class="hero-actions">
-        <a class="btn btn-light" href="#projetos">Ver projetos</a>
-        <a class="btn btn-outline" href="#contato">Solicitar proposta</a>
-      </div>
-      <div class="hero-meta">
-        <span>Felpdesigner</span>
-        <span>Design independente</span>
-        <span>Brasil</span>
-      </div>
-    </section>
-
-    <section class="marquee" aria-label="Especialidades">
-      <div class="marquee-track">
-        <span>BRANDING</span><span>•</span><span>SOCIAL MEDIA</span><span>•</span><span>MOTION DESIGN</span><span>•</span><span>ART DIRECTION</span><span>•</span><span>VISUAL SYSTEMS</span><span>•</span>
-        <span>BRANDING</span><span>•</span><span>SOCIAL MEDIA</span><span>•</span><span>MOTION DESIGN</span><span>•</span><span>ART DIRECTION</span><span>•</span><span>VISUAL SYSTEMS</span><span>•</span>
-      </div>
-    </section>
-
-    <section id="projetos" class="section projects">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Projetos selecionados</span>
-          <h2>Trabalhos recentes</h2>
+    <section class="hero section-shell">
+      <img class="hero-symbol" src="./assets/logo-white.svg" alt="" aria-hidden="true" />
+      <div class="hero-content reveal">
+        <p class="eyebrow">Independent Creative Studio / Brazil</p>
+        <h1>Design que transforma ideia em <span>presença visual.</span></h1>
+        <p class="hero-copy">Identidades, campanhas e universos visuais desenvolvidos para marcas, artistas e projetos que não querem parecer comuns.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#work">Ver projetos</a>
+          <a class="btn btn-outline" href="https://wa.me/5548920023095?text=me%20conta%20mais" target="_blank" rel="noopener">Iniciar projeto ↗</a>
         </div>
-        <p>Uma seleção de identidades, universos visuais e conteúdos desenvolvidos para música, alimentação e negócios locais.</p>
       </div>
 
-      <div class="project-grid">
-        <article class="project-card project-a">
-          <div class="project-visual">
-            <div class="project-mark">SS</div>
-            <span>01</span>
+      <div class="hero-footer">
+        <span>Branding</span>
+        <span>Art Direction</span>
+        <span>Social Media</span>
+        <span>Motion</span>
+        <span>Cover Art</span>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Especialidades">
+      <div class="ticker-track">
+        <span>BRANDING</span><i>✦</i><span>ART DIRECTION</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>MOTION</span><i>✦</i><span>COVER ART</span><i>✦</i>
+        <span>BRANDING</span><i>✦</i><span>ART DIRECTION</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>MOTION</span><i>✦</i><span>COVER ART</span><i>✦</i>
+      </div>
+    </section>
+
+    <section id="work" class="section section-shell">
+      <div class="section-head reveal">
+        <div>
+          <p class="kicker">Selected Work / 2026</p>
+          <h2>Projetos que constroem percepção.</h2>
+        </div>
+        <p>Uma seleção de projetos em que conceito, direção de arte e execução trabalham como um único sistema visual.</p>
+      </div>
+
+      <div class="work-grid">
+        <a class="work-card work-featured reveal" href="https://dribbble.com/shots/27745447-SENADOR-SIDE-Album-Cover-Visual-Identity" target="_blank" rel="noopener">
+          <div class="work-visual visual-senador">
+            <span class="work-index">01</span>
+            <div class="project-monogram">SS</div>
+            <img class="work-ornament" src="./assets/ornament-white.svg" alt="" aria-hidden="true" />
+            <span class="view-project">View project ↗</span>
           </div>
-          <div class="project-info">
-            <div><h3>Senador Side</h3><p>Album artwork & visual universe</p></div>
-            <b>2026</b>
+          <div class="work-meta">
+            <div>
+              <h3>Senador Side</h3>
+              <p>Album Cover / Visual Identity / Art Direction</p>
+            </div>
+            <span>2026</span>
+          </div>
+        </a>
+
+        <article class="work-card reveal">
+          <div class="work-visual visual-puracai">
+            <span class="work-index">02</span>
+            <div class="project-monogram">P</div>
+            <img class="work-ornament subtle" src="./assets/ornament-white.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="work-meta">
+            <div><h3>Puraçaí</h3><p>Brand Identity / Social System</p></div>
+            <span>2026</span>
           </div>
         </article>
 
-        <article class="project-card project-b">
-          <div class="project-visual">
-            <div class="project-mark">P</div>
-            <span>02</span>
+        <article class="work-card reveal">
+          <div class="work-visual visual-araujos">
+            <span class="work-index">03</span>
+            <div class="project-monogram">A</div>
+            <img class="work-ornament subtle" src="./assets/ornament-white.svg" alt="" aria-hidden="true" />
           </div>
-          <div class="project-info">
-            <div><h3>Puraçaí</h3><p>Brand identity & social system</p></div>
-            <b>2026</b>
-          </div>
-        </article>
-
-        <article class="project-card project-c">
-          <div class="project-visual">
-            <div class="project-mark">A</div>
-            <span>03</span>
-          </div>
-          <div class="project-info">
-            <div><h3>Araujo's</h3><p>Food branding & content direction</p></div>
-            <b>2026</b>
+          <div class="work-meta">
+            <div><h3>Araujo's</h3><p>Food Branding / Content Direction</p></div>
+            <span>2026</span>
           </div>
         </article>
 
-        <article class="project-card project-d">
-          <div class="project-visual">
-            <div class="project-mark">RM</div>
-            <span>04</span>
+        <article class="work-card reveal">
+          <div class="work-visual visual-rm">
+            <span class="work-index">04</span>
+            <div class="project-monogram">RM</div>
+            <img class="work-ornament subtle" src="./assets/ornament-white.svg" alt="" aria-hidden="true" />
           </div>
-          <div class="project-info">
-            <div><h3>RM Barbearia</h3><p>Visual strategy & social presence</p></div>
-            <b>2026</b>
+          <div class="work-meta">
+            <div><h3>RM Barbearia</h3><p>Visual Strategy / Social Presence</p></div>
+            <span>2026</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="servicos" class="section services">
-      <div class="section-head">
-        <div><span class="kicker">O que eu faço</span><h2>Serviços</h2></div>
-        <p>Do conceito à aplicação: sistemas visuais consistentes para marcas, campanhas e conteúdo digital.</p>
+    <section class="manifesto section-shell">
+      <div class="manifesto-symbol-wrap reveal" aria-hidden="true">
+        <img src="./assets/ornament-white.svg" alt="" />
       </div>
+      <div class="manifesto-copy reveal">
+        <p class="kicker">Manifesto</p>
+        <h2>Não é só fazer bonito. É construir percepção.</h2>
+        <p>Cada projeto nasce de uma ideia central. A partir dela, desenvolvo uma linguagem capaz de conectar conceito, estética e comunicação — da primeira impressão aos detalhes que fazem uma marca ser reconhecida.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section section-shell">
+      <div class="section-head reveal">
+        <div>
+          <p class="kicker">What I do</p>
+          <h2>Serviços</h2>
+        </div>
+        <p>Do conceito à aplicação, cada entrega é pensada como parte de um sistema visual consistente.</p>
+      </div>
+
       <div class="service-list">
-        <div><span>01</span><h3>Branding & Identidade Visual</h3><p>Conceito, logo, sistema visual, tipografia, cores e aplicações.</p></div>
-        <div><span>02</span><h3>Social Media Design</h3><p>Direção de arte, campanhas, carrosséis, stories e criativos.</p></div>
-        <div><span>03</span><h3>Motion Design</h3><p>Animações curtas, loops, motion para campanhas e apresentações.</p></div>
-        <div><span>04</span><h3>Direção de Arte</h3><p>Construção de universo visual para música, moda, alimentação e serviços.</p></div>
+        <article class="service-row reveal"><span>01</span><h3>Branding & Identidade Visual</h3><p>Conceito, logo, sistema visual, tipografia, cores e aplicações.</p></article>
+        <article class="service-row reveal"><span>02</span><h3>Direção de Arte</h3><p>Conceitos, campanhas e universos visuais para marcas e projetos criativos.</p></article>
+        <article class="service-row reveal"><span>03</span><h3>Social Media Design</h3><p>Conteúdo pensado como sistema, não como uma coleção de posts desconectados.</p></article>
+        <article class="service-row reveal"><span>04</span><h3>Cover Art</h3><p>Capas e identidades visuais para artistas, singles, álbuns e projetos musicais.</p></article>
+        <article class="service-row reveal"><span>05</span><h3>Motion Design</h3><p>Movimento aplicado à identidade para ampliar impacto, ritmo e percepção.</p></article>
+        <article class="service-row reveal"><span>06</span><h3>Campanhas & Key Visuals</h3><p>Conceitos visuais adaptáveis para diferentes formatos, mídias e pontos de contato.</p></article>
       </div>
     </section>
 
-    <section id="sobre" class="section about">
-      <div class="about-card">
-        <span class="kicker">Sobre</span>
+    <section id="about" class="about section-shell">
+      <div class="about-intro reveal">
+        <p class="kicker">About / Felpdesigner</p>
         <h2>Visual forte. Mensagem clara. Marca consistente.</h2>
-        <p>Sou Felipe Araújo, designer por trás da Felpdesigner. Trabalho com identidade visual, conteúdo e direção de arte para transformar ideias em sistemas visuais com presença.</p>
-        <p class="muted">A proposta é unir estética, estratégia e execução para criar materiais que funcionem no feed, na campanha e na percepção da marca.</p>
       </div>
-      <div class="about-stats">
-        <div><strong>Brand</strong><span>Sistemas visuais</span></div>
-        <div><strong>Social</strong><span>Conteúdo & campanhas</span></div>
-        <div><strong>Motion</strong><span>Animação & impacto</span></div>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p class="about-lead">Sou Felipe Araújo, designer e diretor visual por trás da Felpdesigner.</p>
+          <p>Meu trabalho parte da construção de conceitos para desenvolver identidades, campanhas e universos visuais com personalidade.</p>
+          <p>Trabalho principalmente com branding, direção de arte, social media, cover art e motion design, buscando transformar cada projeto em um sistema visual coerente — capaz de funcionar tanto em uma peça individual quanto em toda a comunicação de uma marca.</p>
+          <p>A Felpdesigner nasce dessa busca por imagens que não apenas chamem atenção, mas criem percepção, reconhecimento e presença.</p>
+        </div>
+
+        <div class="about-system reveal">
+          <div><span>01</span><strong>Identity</strong><small>Assinatura principal</small></div>
+          <div><span>02</span><strong>Recognition</strong><small>Símbolos complementares</small></div>
+          <div><span>03</span><strong>Atmosphere</strong><small>Padrões, textura e movimento</small></div>
+        </div>
       </div>
     </section>
 
-    <section id="contato" class="contact">
-      <span class="kicker">Vamos criar algo forte?</span>
-      <h2>Seu próximo projeto pode começar aqui.</h2>
-      <p>Os botões abaixo já estão preparados. Basta inserir seus links reais no arquivo <code>script.js</code>.</p>
-      <div class="social-row">
-        <a href="#" data-link="instagram">Instagram ↗</a>
-        <a href="#" data-link="behance">Behance ↗</a>
-        <a href="#" data-link="whatsapp">WhatsApp ↗</a>
+    <section class="brand-system section-shell">
+      <div class="brand-system-grid">
+        <div class="brand-mark-panel reveal">
+          <img src="./assets/logo-white.svg" alt="Símbolo oficial Felpdesigner" />
+          <span>Primary Mark</span>
+        </div>
+        <div class="brand-mark-panel reveal">
+          <img src="./assets/ornament-white.svg" alt="Elemento complementar Felpdesigner" />
+          <span>Secondary Element</span>
+        </div>
+      </div>
+
+      <div class="palette reveal" aria-label="Paleta visual Felpdesigner">
+        <div style="--swatch:#050505"><span>#050505</span></div>
+        <div style="--swatch:#0D0D0D"><span>#0D0D0D</span></div>
+        <div style="--swatch:#1C1C1C"><span>#1C1C1C</span></div>
+        <div style="--swatch:#555555"><span>#555555</span></div>
+        <div style="--swatch:#9A9A9A"><span>#9A9A9A</span></div>
+        <div class="light-swatch" style="--swatch:#F2F2EF"><span>#F2F2EF</span></div>
+        <div class="light-swatch" style="--swatch:#FFFFFF"><span>#FFFFFF</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section-shell">
+      <img class="contact-symbol" src="./assets/logo-white.svg" alt="" aria-hidden="true" />
+      <div class="contact-inner reveal">
+        <p class="kicker">Have a project?</p>
+        <h2>Let's make it visual.</h2>
+        <p>Se você tem uma marca, campanha ou projeto que precisa ganhar presença, me chama e a gente desenrola.</p>
+        <a class="big-cta" href="https://wa.me/5548920023095?text=me%20conta%20mais" target="_blank" rel="noopener">Falar no WhatsApp ↗</a>
+      </div>
+
+      <div class="social-links reveal">
+        <a href="https://www.instagram.com/designerffelp0/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://www.behance.net/felpdesigner" target="_blank" rel="noopener">Behance ↗</a>
+        <a href="https://dribbble.com/shots/27745447-SENADOR-SIDE-Album-Cover-Visual-Identity" target="_blank" rel="noopener">Dribbble ↗</a>
+        <a href="https://wa.me/5548920023095?text=me%20conta%20mais" target="_blank" rel="noopener">WhatsApp ↗</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <span>© <span id="year"></span> Felpdesigner</span>
-    <a href="#top">Voltar ao topo ↑</a>
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="./assets/logo-white.svg" alt="" />
+      <span>FELPDESIGNER © <span id="year"></span></span>
+    </div>
+    <div class="footer-meta">
+      <span>Independent Creative Studio</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </footer>
 
   <script src="./script.js"></script>
