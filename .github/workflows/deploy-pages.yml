@@ -24,45 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Normalize portfolio cover images
-        shell: bash
+      - name: Normalize portfolio cover JPEGs
         run: |
-          set -euo pipefail
-          for image in senador-side-restored.jpg puracai-restored.jpg; do
-            test -f "docs/assets/$image"
-            magick "docs/assets/$image" -interlace none -strip -quality 92 "/tmp/$image"
-            mv "/tmp/$image" "docs/assets/$image"
-          done
+          sudo apt-get update -qq
+          sudo apt-get install -y imagemagick
+          magick docs/assets/senador-side-restored.jpg -interlace none -strip -quality 92 /tmp/senador.jpg
+          magick docs/assets/puracai-restored.jpg -interlace none -strip -quality 92 /tmp/puracai.jpg
+          mv /tmp/senador.jpg docs/assets/senador-side-restored.jpg
+          mv /tmp/puracai.jpg docs/assets/puracai-restored.jpg
 
-      - name: Apply explicit cover rendering styles
-        shell: bash
-        run: |
-          cat >> docs/styles.css <<'EOF'
-
-/* Portfolio cover rendering fix */
-.work-visual.has-cover{isolation:isolate;background:#0b0b0b;}
-.work-visual.has-cover .cover-photo{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  display:block;
-  width:100%;
-  height:100%;
-  max-width:none;
-  object-fit:cover;
-  object-position:center;
-}
-.work-visual.has-cover .cover-shade{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.12));
-}
-.work-visual.has-cover .work-index,
-.work-visual.has-cover .project-type,
-.work-visual.has-cover .view-project{z-index:3;}
-EOF
+      - name: Fix cover rendering CSS
+        run: python3 -c "p='docs/styles.css'; s=open(p).read(); s += '\\n.work-visual.has-cover{isolation:isolate;background:#0b0b0b}.work-visual.has-cover .cover-photo{position:absolute;inset:0;z-index:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}.work-visual.has-cover .cover-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.12))}.work-visual.has-cover .work-index,.work-visual.has-cover .project-type,.work-visual.has-cover .view-project{z-index:3}\\n'; open(p,'w').write(s)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
