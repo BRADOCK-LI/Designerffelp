@@ -682,3 +682,31 @@ a:focus-visible,button:focus-visible{
   .hero-note{font-size:12px}
   #process .service-row:hover{padding-left:0}
 }
+
+
+/* Resumos dos projetos — escopo claro sem atribuir resultados não verificados */
+.case-summary{
+  padding:0 2px 28px;
+  max-width:680px;
+  color:#858585;
+  font-size:13px;
+  line-height:1.7;
+}
+.case-summary>p{margin:0}
+.case-summary .case-scope{
+  margin-top:10px;
+  color:#666;
+  font-size:11px;
+}
+.case-scope span{
+  display:inline-block;
+  margin-right:8px;
+  color:#aaa;
+  font-family:"DM Mono",monospace;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+@media (max-width:640px){
+  .case-summary{padding-bottom:24px;font-size:12px}
+}
