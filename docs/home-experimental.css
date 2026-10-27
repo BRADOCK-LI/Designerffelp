@@ -409,3 +409,170 @@ body { background: #020202; }
   .hero { background: linear-gradient(160deg, #020202, #050505 62%, #010101); }
   .work-featured .work-visual::after { opacity: .25; }
 }
+
+
+/* ==========================================================
+   BLACKOUT / PREMIUM DARK — 26.10.2026
+   Refinamento global: preto profundo, contraste e acabamento.
+   ========================================================== */
+:root {
+  --exp-black: #000;
+  --exp-white: #f4f4f2;
+  --exp-muted: #858585;
+  --exp-line: rgba(255,255,255,.085);
+}
+html { background: #000; scrollbar-color: #343434 #030303; }
+body {
+  color: #f1f1ef;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { color: #050505; background: #f4f4f2; }
+.page-noise { opacity: .022; }
+.site-header {
+  background: rgba(0,0,0,.64);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.site-header.scrolled {
+  background: rgba(0,0,0,.94);
+  border-color: rgba(255,255,255,.09);
+}
+.nav a { transition: color 220ms ease, opacity 220ms ease; }
+.nav a:not(.nav-cta):hover { color: #fff; }
+.nav-cta {
+  border-color: rgba(255,255,255,.24);
+  background: rgba(255,255,255,.025);
+}
+.nav-cta:hover {
+  color: #000;
+  background: #f4f4f2;
+  border-color: #f4f4f2;
+}
+.hero {
+  background:
+    radial-gradient(ellipse at 78% 43%, rgba(255,255,255,.035), transparent 30%),
+    linear-gradient(145deg, #000 0%, #050505 53%, #010101 100%);
+}
+.hero::before {
+  opacity: .13;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 74%, transparent);
+}
+.hero::after {
+  border-color: rgba(255,255,255,.095);
+  box-shadow: 0 0 0 30px rgba(255,255,255,.009), 0 0 0 78px rgba(255,255,255,.005);
+}
+.hero-grid-overlay::before { border-color: rgba(255,255,255,.12); }
+.hero-grid-overlay::after { border-color: rgba(255,255,255,.14); }
+.hero-symbol { opacity: .035; }
+.hero h1 { text-shadow: 0 8px 60px rgba(0,0,0,.35); }
+.hero h1 span {
+  background: linear-gradient(105deg, #f6f6f4 0%, #b8b8b6 43%, #686868 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero-copy { color: #a5a5a5; }
+.hero-note { color: #686868; }
+.hero-actions .btn-light {
+  background: #f4f4f2;
+  border-color: #f4f4f2;
+  box-shadow: 0 8px 30px rgba(255,255,255,.035);
+}
+.hero-actions .btn-light:hover { background: #fff; }
+.hero-actions .btn-outline { border-color: rgba(255,255,255,.19); }
+.hero-actions .btn-outline:hover { border-color: rgba(255,255,255,.55); }
+.hero-footer { border-color: rgba(255,255,255,.09); color: #737373; }
+.ticker {
+  background: #020202;
+  border-color: rgba(255,255,255,.075);
+}
+.ticker-track { color: #9c9c9c; }
+.ticker-track i { color: #d8d8d6; }
+.section, .about, .brand-system, .studio-strip, .contact { background-color: #000; }
+.section-head h2, .manifesto h2, .about h2, .contact h2 { color: #f2f2f0; }
+.section-head > p, .about-copy p, .manifesto-copy > p:last-child,
+.contact-inner > p:not(.kicker) { color: #929292; }
+.kicker, .section-head .kicker { color: #a3a3a3; }
+.work-grid { gap: clamp(18px, 2.2vw, 30px); }
+.work-card { background: transparent; }
+.work-visual {
+  border: 1px solid rgba(255,255,255,.085);
+  background: #050505;
+  transition: border-color 280ms ease, background-color 280ms ease;
+}
+.work-card:hover .work-visual { border-color: rgba(255,255,255,.28); }
+.work-featured .work-visual .cover-photo { filter: contrast(1.08) brightness(.82) saturate(.86); }
+.work-featured:hover .work-visual .cover-photo { filter: contrast(1.08) brightness(.94) saturate(.94); }
+.work-featured .work-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.08), transparent 35%, rgba(0,0,0,.18));
+}
+.work-index, .project-type { text-shadow: 0 2px 16px rgba(0,0,0,.55); }
+.work-meta { border-color: rgba(255,255,255,.09); }
+.work-meta h3 { color: #f1f1ef; }
+.work-meta p, .work-meta > span { color: #777; }
+.case-summary { color: #8b8b8b; }
+.case-scope { border-color: rgba(255,255,255,.08); }
+.manifesto {
+  background: linear-gradient(90deg, rgba(255,255,255,.012), transparent 65%);
+  border-top: 1px solid rgba(255,255,255,.045);
+  border-bottom: 1px solid rgba(255,255,255,.045);
+}
+.manifesto-symbol-wrap { opacity: .78; }
+.service-row { border-color: rgba(255,255,255,.085); }
+.service-row > span { color: #666; }
+.service-row h3 { color: #e9e9e7; }
+.service-row p { color: #858585; }
+.service-row:hover h3 { color: #fff; }
+.about-system > div { border-color: rgba(255,255,255,.09); background: #030303; }
+.about-system strong { color: #e8e8e6; }
+.about-system small, .about-system span { color: #777; }
+.brand-mark-panel {
+  border: 1px solid rgba(255,255,255,.075);
+  background: radial-gradient(ellipse at center, #0b0b0b 0%, #030303 70%, #010101 100%);
+}
+.palette > div { border-color: rgba(255,255,255,.08); }
+.studio-strip { border-color: rgba(255,255,255,.08); }
+.studio-strip > div { border-color: rgba(255,255,255,.075); }
+.studio-strip span, .studio-strip small { color: #777; }
+.studio-strip strong { color: #dededc; }
+.contact {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.025), transparent 56%),
+    #000;
+}
+.contact-symbol { opacity: .025; }
+.big-cta { border-color: rgba(255,255,255,.2); }
+.big-cta:hover { border-color: rgba(255,255,255,.55); }
+.social-links { border-color: rgba(255,255,255,.08); }
+.social-links a { color: #888; }
+.social-links a:hover { color: #fff; }
+.site-footer {
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,.085);
+}
+.footer-meta, .footer-brand { color: #777; }
+.footer-meta a:hover { color: #fff; }
+:focus-visible { outline-color: #f4f4f2; outline-offset: 4px; }
+@media (max-width: 640px) {
+  .site-header { background: rgba(0,0,0,.86); }
+  .hero {
+    background:
+      radial-gradient(ellipse at 82% 36%, rgba(255,255,255,.025), transparent 32%),
+      linear-gradient(160deg, #000, #040404 65%, #010101);
+  }
+  .hero::before { opacity: .09; }
+  .hero-symbol { opacity: .022; }
+  .work-featured .work-visual .cover-photo { filter: contrast(1.04) brightness(.9) saturate(.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav a, .nav-cta, .work-visual, .work-card, .big-cta { transition: none !important; }
+}
