@@ -135,3 +135,41 @@ if ('IntersectionObserver' in window) {
     trackedSections.forEach((section) => sectionObserver.observe(section));
   }
 }
+
+
+// Contextual WhatsApp pathways: add a gentle cursor highlight to the three project choices.
+if (finePointer && !motionReduced) {
+  document.querySelectorAll('.pathway-card').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--path-x', ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+      card.style.setProperty('--path-y', ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+    }, { passive: true });
+  });
+}
+
+// Cinematic transition only for internal page-to-page navigation; anchors and external links stay immediate.
+const transitionOverlay = document.createElement('div');
+transitionOverlay.className = 'page-transition';
+transitionOverlay.setAttribute('aria-hidden', 'true');
+transitionOverlay.innerHTML = '<span>FELPDESIGNER</span><span>Visual systems / Independent studio</span>';
+document.body.appendChild(transitionOverlay);
+
+document.querySelectorAll('a[href]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    if (motionReduced || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (link.target === '_blank' || link.hasAttribute('download')) return;
+    let destination;
+    try { destination = new URL(link.href, window.location.href); } catch { return; }
+    if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) return;
+    if (!/\\.html?$/.test(destination.pathname)) return;
+    event.preventDefault();
+    document.body.classList.add('is-transitioning');
+    transitionOverlay.classList.add('is-active');
+    window.setTimeout(() => { window.location.href = destination.href; }, 260);
+  });
+});
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('is-transitioning');
+  transitionOverlay.classList.remove('is-active');
+});
