@@ -1065,3 +1065,11 @@ html { scroll-behavior: smooth; }
     transform: none !important;
   }
 }
+
+/* Magnetic micro-movement is deliberately limited to a few pixels. */
+.hero-actions .btn, .big-cta, .pathway-card {
+  translate: var(--mag-x, 0px) var(--mag-y, 0px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .btn, .big-cta, .pathway-card { translate: none !important; }
+}
