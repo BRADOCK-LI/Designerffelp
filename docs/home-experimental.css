@@ -736,3 +736,105 @@ body { background: #000; }
 @media (prefers-reduced-motion: reduce) {
   .service-row h3 { transition: none !important; }
 }
+
+
+/* ==========================================================
+   IMMERSIVE INTERACTION LAYER — movimento com intenção
+   Efeitos leves, sem dependências externas.
+   ========================================================== */
+:root {
+  --motion-ease: cubic-bezier(.2, .75, .2, 1);
+  --scroll-progress: 0%;
+}
+.scroll-progress {
+  position: fixed;
+  z-index: 1000;
+  inset: 0 auto auto 0;
+  width: var(--scroll-progress);
+  height: 2px;
+  background: var(--exp-white);
+  box-shadow: 0 0 14px rgba(255,255,255,.28);
+  pointer-events: none;
+  transform-origin: left center;
+}
+.hero {
+  --pointer-x: 72%;
+  --pointer-y: 42%;
+}
+.hero::before {
+  background-image:
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255,255,255,.085), transparent 24%),
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+  transition: opacity .5s ease;
+}
+.hero-orbit-one,
+.hero-orbit-two { transition: transform .65s var(--motion-ease); }
+.hero-symbol { transition: transform .8s var(--motion-ease), opacity .5s ease; }
+.work-card {
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
+  transition: transform .45s var(--motion-ease), border-color .35s ease;
+}
+.work-card .work-visual { overflow: hidden; }
+.work-card .work-index,
+.work-card .project-type,
+.work-card .view-project { transform: translateZ(18px); }
+.work-card .work-meta { transition: transform .45s var(--motion-ease); }
+.work-card:hover .work-meta { transform: translateX(3px); }
+.work-card .cover-photo { will-change: transform; }
+.btn, .nav-cta, .big-cta, .social-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-light, .nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+.btn-light::after, .nav-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.28) 48%, transparent 72%);
+  transform: translateX(-130%);
+  transition: transform .7s var(--motion-ease);
+}
+.btn-light:hover::after, .nav-cta:hover::after { transform: translateX(130%); }
+.big-cta {
+  transition: letter-spacing .35s ease, color .35s ease, border-color .35s ease;
+}
+.big-cta:hover { letter-spacing: -.035em; color: #fff; border-color: rgba(255,255,255,.75); }
+.social-links a { transition: color .25s ease, transform .25s var(--motion-ease); }
+.social-links a:hover { color: #fff; transform: translateY(-2px); }
+.nav a[aria-current="location"] { color: #fff; }
+.nav a[aria-current="location"]::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 7px 2px 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+.reveal { transition-duration: .8s; }
+.reveal.in-view { transition-delay: var(--reveal-delay, 0ms); }
+.service-row { transition: padding-left .35s var(--motion-ease), border-color .35s ease; }
+.service-row:hover { padding-left: 8px; }
+.contact-inner .big-cta::after { content: " ↗"; display: inline-block; transition: transform .25s var(--motion-ease); }
+.contact-inner .big-cta:hover::after { transform: translate(4px,-3px); }
+@media (hover: hover) and (pointer: fine) {
+  .work-card { cursor: pointer; }
+}
+@media (max-width: 760px), (hover: none) {
+  .work-card { transform: none !important; }
+  .hero::before { background-size: auto, 58px 58px, 58px 58px; }
+  .service-row:hover { padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+  .work-card, .work-card .work-meta, .hero-orbit-one, .hero-orbit-two,
+  .hero-symbol, .btn-light::after, .nav-cta::after, .big-cta, .social-links a,
+  .service-row { transition: none !important; transform: none !important; }
+  .hero::before { transition: none; }
+}
