@@ -162,7 +162,7 @@ document.querySelectorAll('a[href]').forEach((link) => {
     let destination;
     try { destination = new URL(link.href, window.location.href); } catch { return; }
     if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) return;
-    if (!/\\.html?$/.test(destination.pathname)) return;
+    if (!/\.html?$/.test(destination.pathname)) return;
     event.preventDefault();
     document.body.classList.add('is-transitioning');
     transitionOverlay.classList.add('is-active');
