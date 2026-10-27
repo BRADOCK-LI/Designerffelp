@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020202" />
+  <meta name="description" content="Estudo de caso Senador Side por Felpdesigner: capa de álbum, identidade visual e direção de arte para um projeto musical." />
+  <meta property="og:title" content="Senador Side — Estudo de Caso | Felpdesigner" />
+  <meta property="og:description" content="Capa de álbum, identidade visual e direção de arte por Felpdesigner." />
+  <title>Senador Side — Estudo de Caso | Felpdesigner</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#020202;--panel:#080808;--white:#f4f4f1;--muted:#929292;--line:rgba(255,255,255,.13);--mono:"DM Mono",monospace;--display:"Space Grotesk",sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:10;pointer-events:none;opacity:.045;background-image:radial-gradient(rgba(255,255,255,.7) .5px,transparent .7px);background-size:5px 5px}
+    a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{width:min(1320px,90vw);margin:auto}
+    .topbar{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+    .brand{display:flex;align-items:center;gap:10px;font:700 13px var(--display);letter-spacing:-.04em}.brand img{width:30px;height:30px;object-fit:contain}.brand em{font-style:normal;color:#777}
+    .back{color:#aaa;transition:color .2s}.back:hover{color:white}
+    .case-hero{position:relative;min-height:690px;display:grid;grid-template-columns:1fr .85fr;align-items:center;gap:7vw;padding:80px 0 90px;isolation:isolate}
+    .case-hero:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(90deg,#000,transparent)}
+    .orb{position:absolute;z-index:-1;width:44vw;max-width:610px;aspect-ratio:1;border:1px solid rgba(255,255,255,.1);border-radius:50%;right:-8vw;top:50%;transform:translateY(-50%);box-shadow:0 0 0 35px rgba(255,255,255,.012),0 0 0 90px rgba(255,255,255,.008)}
+    .eyebrow,.micro{font:10px/1.8 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#999}
+    .eyebrow:before{content:"";display:inline-block;width:6px;height:6px;background:#eee;border-radius:50%;margin:0 10px 1px 0;box-shadow:0 0 15px #fff}
+    h1{font:600 clamp(58px,8.5vw,118px)/.88 var(--display);letter-spacing:-.085em;margin:25px 0 28px;max-width:720px}
+    h1 span{display:block;color:#747474;background:linear-gradient(100deg,#f4f4f1,#7c7c7c);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .intro{max-width:520px;font-size:15px;line-height:1.85;color:#aaa}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}.tags span{border:1px solid var(--line);padding:9px 11px;font:9px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#c4c4c4}
+    .art-frame{position:relative;padding:12px;border:1px solid rgba(255,255,255,.2);background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.005) 40%);box-shadow:0 30px 100px rgba(0,0,0,.65)}
+    .art-frame:before,.art-frame:after{content:"";position:absolute;width:28px;height:28px;border-color:#eee;border-style:solid;opacity:.65}.art-frame:before{top:-5px;left:-5px;border-width:1px 0 0 1px}.art-frame:after{right:-5px;bottom:-5px;border-width:0 1px 1px 0}
+    .art-frame img{width:100%;aspect-ratio:1;object-fit:cover;filter:contrast(1.04);background:#080808}
+    .frame-label{display:flex;justify-content:space-between;gap:10px;padding:12px 2px 0;font:9px var(--mono);letter-spacing:.1em;color:#999;text-transform:uppercase}
+    .section{padding:95px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:.7fr 1fr;gap:40px;align-items:start;margin-bottom:45px}
+    .num{font:10px var(--mono);letter-spacing:.13em;color:#777}.section h2{font:600 clamp(34px,5vw,64px)/.98 var(--display);letter-spacing:-.065em;margin:14px 0 0}
+    .section-lead{max-width:650px;font-size:15px;line-height:1.9;color:#aaa;margin:0}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .principle{min-height:190px;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 65%)}
+    .principle b{font:500 12px var(--mono);color:#ddd}.principle h3{font:600 23px var(--display);letter-spacing:-.04em;margin:40px 0 10px}.principle p{font-size:12px;line-height:1.8;color:#929292;margin:0}
+    .gallery{display:grid;grid-template-columns:1fr .72fr;gap:18px;align-items:stretch}.gallery-panel{min-height:330px;border:1px solid var(--line);padding:24px;background:radial-gradient(ellipse at 70% 25%,#161616,#050505 65%);position:relative;overflow:hidden}
+    .gallery-panel:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.018) 6px)}
+    .giant-mark{font:700 clamp(80px,17vw,220px)/.8 var(--display);letter-spacing:-.12em;color:#eee;position:absolute;left:24px;bottom:30px}
+    .rings{position:absolute;width:340px;aspect-ratio:1;border:1px solid #555;border-radius:50%;right:-100px;top:-100px;box-shadow:0 0 0 30px rgba(255,255,255,.02),0 0 0 65px rgba(255,255,255,.015)}
+    .gallery-panel p{position:relative;z-index:1;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#aaa}
+    .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:0 35px}.spec{padding:20px 0;border-bottom:1px solid var(--line)}.spec span{display:block;font:9px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#777;margin-bottom:9px}.spec strong{font:500 17px var(--display);color:#e6e6e6}
+    .cta{padding:85px 0 35px}.cta-panel{border:1px solid var(--line);padding:clamp(28px,6vw,70px);position:relative;overflow:hidden;background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.06),transparent 42%),#050505}.cta-panel h2{font:600 clamp(38px,7vw,82px)/.95 var(--display);letter-spacing:-.075em;max-width:850px;margin:15px 0 24px}.cta-panel p{color:#999;line-height:1.8;max-width:560px;font-size:14px}.button{display:inline-flex;gap:20px;align-items:center;background:#f4f4f1;color:#030303;padding:16px 19px;margin-top:15px;font-size:12px;font-weight:600;transition:transform .2s,background .2s}.button:hover{transform:translateY(-3px);background:#fff}
+    footer{display:flex;justify-content:space-between;gap:20px;padding:28px 0 35px;border-top:1px solid var(--line);font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#777}
+    @media(max-width:800px){.case-hero{grid-template-columns:1fr;gap:45px;min-height:0;padding:70px 0}.orb{width:75vw;right:-20vw;top:45%}.art-frame{max-width:560px;width:100%;margin:0 auto}.section{padding:68px 0}.section-head{grid-template-columns:1fr;gap:20px}.principles{grid-template-columns:1fr}.principle{min-height:145px}.principle h3{margin-top:25px}.gallery{grid-template-columns:1fr}.gallery-panel{min-height:250px}.spec-list{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.wrap{width:88vw}.topbar{height:68px}.brand{font-size:11px}.brand img{width:25px;height:25px}.back{font-size:9px}.case-hero{padding:58px 0 65px}h1{font-size:clamp(54px,16vw,76px)}.intro{font-size:14px}.section{padding:58px 0}.spec-list{grid-template-columns:1fr}.frame-label{font-size:8px}.cta{padding-top:55px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="./index.html"><img src="./assets/logo-white.svg" alt=""><span>FELP<em>DESIGNER</em></span></a>
+    <a class="back" href="./index.html#work">← Voltar ao portfólio</a>
+  </header>
+  <main class="wrap">
+    <section class="case-hero">
+      <div class="orb" aria-hidden="true"></div>
+      <div>
+        <p class="eyebrow">Felpdesigner / Selected case 001</p>
+        <h1>Senador <span>Side.</span></h1>
+        <p class="intro">Um projeto musical desenvolvido a partir de capa de álbum, identidade visual e direção de arte. O estudo reúne a peça principal e apresenta o projeto como um sistema visual — com foco em conceito, presença e consistência.</p>
+        <div class="tags"><span>Album cover</span><span>Visual identity</span><span>Art direction</span></div>
+      </div>
+      <figure class="art-frame">
+        <img src="./assets/senador-side-restored.jpg" alt="Arte de capa do projeto Senador Side" fetchpriority="high">
+        <figcaption class="frame-label"><span>FD—CASE / 001</span><span>2026 · Visual study</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><p class="num">01 / OVERVIEW</p><h2>Uma ideia.<br>Uma linguagem.</h2></div>
+        <p class="section-lead">A capa funciona como ponto de entrada para o universo visual do projeto. A direção de arte organiza a primeira impressão e dá unidade à apresentação, conectando a peça principal a uma assinatura visual reconhecível.</p>
+      </div>
+      <div class="principles">
+        <article class="principle"><b>01 / CONCEITO</b><h3>Intenção visual</h3><p>Construir uma apresentação com personalidade, em que as escolhas estéticas trabalham a favor da ideia central.</p></article>
+        <article class="principle"><b>02 / IDENTIDADE</b><h3>Reconhecimento</h3><p>Tratar a capa como parte de uma linguagem visual, e não apenas como uma imagem isolada.</p></article>
+        <article class="principle"><b>03 / DIREÇÃO</b><h3>Coerência</h3><p>Manter uma linha visual consistente entre o conceito, a peça principal e a forma de apresentar o projeto.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><p class="num">02 / VISUAL LANGUAGE</p><h2>Forma com propósito.</h2></div>
+        <p class="section-lead">A leitura do projeto é organizada em torno da capa e da sua presença visual. O restante do estudo usa uma interface escura, tipografia precisa e marcações técnicas para deixar a arte em primeiro plano sem competir com ela.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-panel"><p>Senador Side / Visual signature</p><div class="rings" aria-hidden="true"></div><div class="giant-mark">SS.</div></div>
+        <div class="gallery-panel"><p>Creative direction / 001</p><div class="spec-list"><div class="spec"><span>Entrega</span><strong>Capa de álbum</strong></div><div class="spec"><span>Campo</span><strong>Projeto musical</strong></div><div class="spec"><span>Abordagem</span><strong>Direção de arte</strong></div><div class="spec"><span>Sistema</span><strong>Identidade visual</strong></div></div></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-panel">
+        <p class="micro">Seu projeto pode ser o próximo</p>
+        <h2>Vamos construir uma identidade com presença.</h2>
+        <p>Tem uma marca, artista ou ideia que precisa de uma linguagem visual mais forte? Vamos conversar sobre o objetivo do projeto e encontrar uma direção adequada.</p>
+        <a class="button" href="https://wa.me/5548920023095?text=Ol%C3%A1%2C%20Felipe!%20Vi%20o%20estudo%20de%20caso%20Senador%20Side%20e%20quero%20conversar%20sobre%20um%20projeto%20visual." target="_blank" rel="noopener">Conversar sobre meu projeto ↗</a>
+      </div>
+    </section>
+    <footer><span>FELPDESIGNER © 2026</span><a href="./index.html#work">Voltar aos projetos ↑</a></footer>
+  </main>
+</body>
+</html>
