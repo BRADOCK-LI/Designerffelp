@@ -989,3 +989,79 @@ body.is-transitioning main, body.is-transitioning .site-header, body.is-transiti
   }
   .pathway-card:hover { transform: none; }
 }
+
+
+/* MOTION PASS 02 — movimento editorial, sutil e consistente */
+:root {
+  --motion-smooth: cubic-bezier(.22,.68,0,1);
+}
+html { scroll-behavior: smooth; }
+.reveal {
+  transition-property: opacity, transform, filter;
+  transition-duration: .78s;
+  transition-timing-function: var(--motion-smooth);
+  filter: blur(2px);
+}
+.reveal.in-view { filter: blur(0); }
+.work-card.reveal, .pathway-card.reveal, .service-row.reveal {
+  transition-duration: .85s;
+}
+.work-card .work-visual img,
+.work-card .work-visual .cover-photo {
+  transition: transform .9s var(--motion-smooth), filter .65s ease;
+}
+.work-card:hover .work-visual img,
+.work-card:hover .work-visual .cover-photo {
+  transform: scale(1.035);
+}
+.work-visual {
+  position: relative;
+  isolation: isolate;
+}
+.work-visual::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--visual-x, 50%) var(--visual-y, 50%), rgba(255,255,255,.11), transparent 48%);
+  transition: opacity .35s ease;
+}
+.work-card:hover .work-visual::before { opacity: 1; }
+.pathway-card:focus-visible, .hero-actions .btn:focus-visible,
+.big-cta:focus-visible, .nav a:focus-visible {
+  outline: 2px solid #f4f4f2;
+  outline-offset: 5px;
+}
+.hero-orbit-one, .hero-orbit-two {
+  transform-origin: center;
+}
+.hero-orbit-one { animation: exp-orbit-breathe 7s ease-in-out infinite; }
+.hero-orbit-two { animation: exp-orbit-breathe 9s ease-in-out infinite reverse; }
+@keyframes exp-orbit-breathe {
+  0%, 100% { opacity: .58; }
+  50% { opacity: 1; }
+}
+.pathway-card, .work-card, .service-row, .social-links a, .nav-cta {
+  will-change: auto;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pathway-card, .work-card { transform-style: preserve-3d; }
+  .hero-actions .btn, .big-cta, .nav-cta { transition-timing-function: var(--motion-smooth); }
+}
+@media (max-width: 760px) {
+  .reveal { filter: none; }
+  .work-card:hover .work-visual img,
+  .work-card:hover .work-visual .cover-photo { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .work-card .work-visual img, .work-card .work-visual .cover-photo,
+  .hero-orbit-one, .hero-orbit-two, .work-visual::before {
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
