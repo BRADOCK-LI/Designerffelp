@@ -173,3 +173,34 @@ window.addEventListener('pageshow', () => {
   document.body.classList.remove('is-transitioning');
   transitionOverlay.classList.remove('is-active');
 });
+
+
+// Motion pass 02: pointer-following highlights, only on precise pointers.
+if (finePointer && !motionReduced) {
+  document.querySelectorAll('.work-card .work-visual').forEach((visual) => {
+    visual.addEventListener('pointermove', (event) => {
+      const rect = visual.getBoundingClientRect();
+      visual.style.setProperty('--visual-x', ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+      visual.style.setProperty('--visual-y', ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+    }, { passive: true });
+    visual.addEventListener('pointerleave', () => {
+      visual.style.setProperty('--visual-x', '50%');
+      visual.style.setProperty('--visual-y', '50%');
+    }, { passive: true });
+  });
+
+  // A restrained magnetic response gives primary actions a tactile feel.
+  document.querySelectorAll('.hero-actions .btn, .big-cta, .pathway-card').forEach((element) => {
+    element.addEventListener('pointermove', (event) => {
+      const rect = element.getBoundingClientRect();
+      const dx = (event.clientX - rect.left - rect.width / 2) / rect.width;
+      const dy = (event.clientY - rect.top - rect.height / 2) / rect.height;
+      element.style.setProperty('--mag-x', (dx * 3).toFixed(2) + 'px');
+      element.style.setProperty('--mag-y', (dy * 3).toFixed(2) + 'px');
+    }, { passive: true });
+    element.addEventListener('pointerleave', () => {
+      element.style.setProperty('--mag-x', '0px');
+      element.style.setProperty('--mag-y', '0px');
+    }, { passive: true });
+  });
+}
