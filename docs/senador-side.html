@@ -47,12 +47,28 @@
     .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:0 35px}.spec{padding:20px 0;border-bottom:1px solid var(--line)}.spec span{display:block;font:9px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#777;margin-bottom:9px}.spec strong{font:500 17px var(--display);color:#e6e6e6}
     .cta{padding:85px 0 35px}.cta-panel{border:1px solid var(--line);padding:clamp(28px,6vw,70px);position:relative;overflow:hidden;background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.06),transparent 42%),#050505}.cta-panel h2{font:600 clamp(38px,7vw,82px)/.95 var(--display);letter-spacing:-.075em;max-width:850px;margin:15px 0 24px}.cta-panel p{color:#999;line-height:1.8;max-width:560px;font-size:14px}.button{display:inline-flex;gap:20px;align-items:center;background:#f4f4f1;color:#030303;padding:16px 19px;margin-top:15px;font-size:12px;font-weight:600;transition:transform .2s,background .2s}.button:hover{transform:translateY(-3px);background:#fff}
     footer{display:flex;justify-content:space-between;gap:20px;padding:28px 0 35px;border-top:1px solid var(--line);font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#777}
+
+    .case-progress{position:fixed;z-index:30;top:0;left:0;width:var(--case-progress,0%);height:2px;background:#f4f4f1;box-shadow:0 0 16px rgba(255,255,255,.24);pointer-events:none}
+    .case-reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.2,1)}
+    .case-reveal.is-visible{opacity:1;transform:translateY(0)}
+    .principle,.gallery-panel,.spec{transition:border-color .3s ease,background-color .3s ease}
+    .principle:hover{border-color:rgba(255,255,255,.28);background-color:#0b0b0b}
+    .art-frame img{transition:transform .8s cubic-bezier(.2,.75,.2,1),filter .5s ease}
+    .art-frame:hover img{transform:scale(1.015);filter:contrast(1.08)}
+    .cta-panel:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.045) 50%,transparent 75%);transform:translateX(-120%);transition:transform .9s ease}
+    .cta-panel:hover:after{transform:translateX(120%)}
+    .case-transition{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-between;padding:26px 5vw;background:#050505;color:#f4f4f1;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .32s ease,visibility .32s ease;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+    .case-transition.is-active{opacity:1;visibility:visible}
+    @media(prefers-reduced-motion:reduce){.case-reveal,.art-frame img,.cta-panel:after,.case-transition{transition:none!important}.case-reveal{opacity:1;transform:none}}
+
     @media(max-width:800px){.case-hero{grid-template-columns:1fr;gap:45px;min-height:0;padding:70px 0}.orb{width:75vw;right:-20vw;top:45%}.art-frame{max-width:560px;width:100%;margin:0 auto}.section{padding:68px 0}.section-head{grid-template-columns:1fr;gap:20px}.principles{grid-template-columns:1fr}.principle{min-height:145px}.principle h3{margin-top:25px}.gallery{grid-template-columns:1fr}.gallery-panel{min-height:250px}.spec-list{grid-template-columns:1fr 1fr}}
     @media(max-width:480px){.wrap{width:88vw}.topbar{height:68px}.brand{font-size:11px}.brand img{width:25px;height:25px}.back{font-size:9px}.case-hero{padding:58px 0 65px}h1{font-size:clamp(54px,16vw,76px)}.intro{font-size:14px}.section{padding:58px 0}.spec-list{grid-template-columns:1fr}.frame-label{font-size:8px}.cta{padding-top:55px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
   </style>
 </head>
 <body>
+  <div class="case-progress" aria-hidden="true"></div>
+  <div class="case-transition" aria-hidden="true"><span>FELPDESIGNER</span><span>Selected case / Senador Side</span></div>
   <header class="wrap topbar">
     <a class="brand" href="./index.html"><img src="./assets/logo-white.svg" alt=""><span>FELP<em>DESIGNER</em></span></a>
     <a class="back" href="./index.html#work">← Voltar ao portfólio</a>
@@ -105,5 +121,45 @@
     </section>
     <footer><span>FELPDESIGNER © 2026</span><a href="./index.html#work">Voltar aos projetos ↑</a></footer>
   </main>
+
+  <script>
+    // Case study motion and transitions, with reduced-motion support.
+    (() => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const progress = document.querySelector('.case-progress');
+      const updateProgress = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        document.documentElement.style.setProperty('--case-progress', (max > 0 ? window.scrollY / max * 100 : 0).toFixed(2) + '%');
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+
+      const revealItems = document.querySelectorAll('.case-hero > div:not(.orb), .art-frame, .section-head, .principle, .gallery-panel, .cta-panel');
+      if (reduced || !('IntersectionObserver' in window)) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      } else {
+        revealItems.forEach((item) => item.classList.add('case-reveal'));
+        const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        }), { threshold: .08, rootMargin: '0px 0px -35px 0px' });
+        revealItems.forEach((item) => observer.observe(item));
+      }
+
+      const overlay = document.querySelector('.case-transition');
+      document.querySelectorAll('a[href]').forEach((link) => link.addEventListener('click', (event) => {
+        if (reduced || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
+        let url;
+        try { url = new URL(link.href, location.href); } catch { return; }
+        if (url.origin !== location.origin || url.pathname === location.pathname || !/\\.html?$/.test(url.pathname)) return;
+        event.preventDefault();
+        overlay.classList.add('is-active');
+        window.setTimeout(() => { location.href = url.href; }, 260);
+      }));
+      window.addEventListener('pageshow', () => overlay.classList.remove('is-active'));
+    })();
+  </script>
 </body>
 </html>
