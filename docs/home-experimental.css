@@ -351,3 +351,61 @@
   .hero .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+
+/* ==========================================================
+   FUTURE BLACK — refinamento visual v2
+   ========================================================== */
+:root {
+  --exp-black: #020202;
+  --exp-white: #f5f5f5;
+  --exp-muted: #858585;
+  --exp-line: rgba(255,255,255,.11);
+}
+body { background: #020202; }
+.page-noise { opacity: .035; }
+.site-header.scrolled { background: rgba(2,2,2,.88); border-color: rgba(255,255,255,.09); }
+.hero {
+  background:
+    radial-gradient(ellipse at 78% 46%, rgba(255,255,255,.045), transparent 31%),
+    linear-gradient(135deg, #020202 0%, #050505 56%, #010101 100%);
+}
+.hero::before {
+  opacity: .22;
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 82%, transparent);
+}
+.hero::after {
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 0 0 26px rgba(255,255,255,.015), 0 0 0 70px rgba(255,255,255,.008);
+}
+.hero-grid-overlay::before { border-color: rgba(255,255,255,.17); }
+.hero-grid-overlay::after { border-color: rgba(255,255,255,.2); }
+.hero-coordinate { color: #8d8d8d; }
+.hero-coordinate-side span { border-color: rgba(255,255,255,.19); background: rgba(0,0,0,.7); }
+.ticker { background: #030303; border-color: rgba(255,255,255,.1); }
+.section-head .kicker, .kicker { color: #a5a5a5; }
+.work-visual {
+  border: 1px solid rgba(255,255,255,.1);
+  background-color: #050505;
+}
+.work-card:hover .work-visual { border-color: rgba(255,255,255,.32); }
+.work-featured .work-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .45;
+  background: linear-gradient(135deg, rgba(255,255,255,.055), transparent 35%, transparent 72%, rgba(255,255,255,.035));
+}
+.work-featured .work-visual { isolation: isolate; }
+.work-featured .work-visual .cover-photo { filter: contrast(1.06) brightness(.88); }
+.work-featured:hover .work-visual .cover-photo { filter: contrast(1.08) brightness(1); }
+.manifesto { background: linear-gradient(90deg, rgba(255,255,255,.012), transparent 60%); }
+.service-row { border-color: rgba(255,255,255,.1); }
+.brand-mark-panel { border: 1px solid rgba(255,255,255,.07); background: radial-gradient(ellipse at center, #101010, #030303 72%); }
+.contact { background: radial-gradient(ellipse at 50% 45%, rgba(255,255,255,.025), transparent 60%); }
+@media (max-width: 640px) {
+  .hero { background: linear-gradient(160deg, #020202, #050505 62%, #010101); }
+  .work-featured .work-visual::after { opacity: .25; }
+}
