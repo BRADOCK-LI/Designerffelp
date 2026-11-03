@@ -67,11 +67,27 @@ if (!motionReduced) {
   }, { passive: true });
   updateProgress();
 
-  // Stagger reveals by a few milliseconds, without delaying the page's initial content.
-  document.querySelectorAll('.section-head.reveal, .work-card.reveal, .service-row.reveal, .about-grid .reveal, .social-links.reveal')
-    .forEach((element, index) => {
-      element.style.setProperty('--reveal-delay', (index % 4) * 65 + 'ms');
+  // Choreograph motion locally: each visual group gets its own short sequence.
+  const revealGroups = [
+    '.work-grid',
+    '.service-list',
+    '.pathways-grid',
+    '.brand-system-grid',
+    '.studio-strip',
+    '.social-links'
+  ];
+  revealGroups.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((group) => {
+      const children = [...group.querySelectorAll(':scope > .reveal')];
+      children.forEach((element, index) => {
+        element.style.setProperty('--reveal-delay', Math.min(index, 4) * 85 + 'ms');
+      });
     });
+  });
+
+  // Section introductions enter before their content, keeping the reading rhythm clear.
+  document.querySelectorAll('.section-head.reveal, .pathways-heading.reveal, .about-intro.reveal, .manifesto-copy.reveal, .contact-inner.reveal')
+    .forEach((element) => element.style.setProperty('--reveal-delay', '0ms'));
 }
 
 const hero = document.querySelector('.hero');
