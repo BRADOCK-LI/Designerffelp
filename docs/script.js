@@ -110,21 +110,37 @@ if (hero && finePointer && !motionReduced) {
   }, { passive: true });
 }
 
-// Small 3D response on desktop cards only; no tilt on touch devices.
+// Work cards: one animation frame per card keeps pointer feedback smooth and inexpensive.
 if (finePointer && !motionReduced) {
   document.querySelectorAll('.work-card').forEach((card) => {
-    card.addEventListener('pointermove', (event) => {
+    let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const renderCardPointer = () => {
       const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
-      const rotateY = (x - 0.5) * 2.4;
-      const rotateX = (0.5 - y) * 2.4;
-      card.style.setProperty('--tilt-x', rotateY.toFixed(2) + 'deg');
-      card.style.setProperty('--tilt-y', rotateX.toFixed(2) + 'deg');
+      const x = Math.max(0, Math.min(1, (pointerX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (pointerY - rect.top) / rect.height));
+      card.style.setProperty('--tilt-x', ((x - .5) * 2.8).toFixed(2) + 'deg');
+      card.style.setProperty('--tilt-y', ((.5 - y) * 2.8).toFixed(2) + 'deg');
+      card.style.setProperty('--card-pointer-x', (x * 100).toFixed(1) + '%');
+      card.style.setProperty('--card-pointer-y', (y * 100).toFixed(1) + '%');
+      frame = 0;
+    };
+
+    card.addEventListener('pointermove', (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!frame) frame = window.requestAnimationFrame(renderCardPointer);
     }, { passive: true });
+
     card.addEventListener('pointerleave', () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
       card.style.setProperty('--tilt-x', '0deg');
       card.style.setProperty('--tilt-y', '0deg');
+      card.style.setProperty('--card-pointer-x', '50%');
+      card.style.setProperty('--card-pointer-y', '50%');
     }, { passive: true });
   });
 }
