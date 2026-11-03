@@ -158,7 +158,11 @@
         overlay.classList.add('is-active');
         window.setTimeout(() => { location.href = url.href; }, 260);
       }));
-      window.addEventListener('pageshow', () => overlay.classList.remove('is-active'));
+      window.addEventListener('pageshow', () => {
+        if (reduced) return;
+        overlay.classList.add('is-active');
+        window.setTimeout(() => overlay.classList.remove('is-active'), 70);
+      });
     })();
   </script>
 </body>
