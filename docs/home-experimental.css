@@ -1110,3 +1110,94 @@ html { scroll-behavior: smooth; }
     transition: none !important;
   }
 }
+
+
+/* INTERACTION PASS 01 — feedback tátil e profundidade controlada */
+.work-card {
+  --card-pointer-x: 50%;
+  --card-pointer-y: 50%;
+  transform: perspective(1100px)
+    translate3d(0, var(--card-reveal-y, 0px), 0)
+    rotateX(var(--tilt-y, 0deg))
+    rotateY(var(--tilt-x, 0deg));
+  transform-origin: center;
+  transition:
+    transform .55s cubic-bezier(.16, 1, .3, 1),
+    border-color .35s ease,
+    box-shadow .45s ease;
+}
+.work-card.reveal {
+  --card-reveal-y: 30px;
+}
+.work-card.reveal.in-view {
+  --card-reveal-y: 0px;
+}
+.work-card:hover {
+  border-color: rgba(255,255,255,.32);
+  box-shadow: 0 18px 55px rgba(0,0,0,.24);
+}
+.work-card:active {
+  scale: .992;
+}
+.work-visual::before {
+  background: radial-gradient(
+    circle at var(--card-pointer-x, var(--visual-x, 50%)) var(--card-pointer-y, var(--visual-y, 50%)),
+    rgba(255,255,255,.13), transparent 52%
+  );
+}
+.hero-actions .btn,
+.nav-cta,
+.big-cta,
+.pathway-card,
+.social-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+.hero-actions .btn,
+.nav-cta,
+.pathway-card {
+  transition:
+    translate .32s cubic-bezier(.16, 1, .3, 1),
+    scale .22s ease,
+    background-color .35s ease,
+    border-color .35s ease,
+    color .35s ease;
+}
+.hero-actions .btn:active,
+.nav-cta:active,
+.pathway-card:active {
+  scale: .985;
+}
+.big-cta:active,
+.social-links a:active {
+  opacity: .72;
+}
+.pathway-card:focus-visible,
+.work-card:focus-visible,
+.hero-actions .btn:focus-visible,
+.big-cta:focus-visible,
+.nav-cta:focus-visible,
+.social-links a:focus-visible {
+  outline: 2px solid #f4f4f2;
+  outline-offset: 5px;
+}
+@media (max-width: 760px), (hover: none) {
+  .work-card,
+  .work-card.reveal,
+  .work-card.reveal.in-view {
+    transform: none !important;
+  }
+  .work-card:active { scale: .995; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-card,
+  .hero-actions .btn,
+  .nav-cta,
+  .big-cta,
+  .pathway-card,
+  .social-links a {
+    transition: none !important;
+    scale: none !important;
+    translate: none !important;
+    box-shadow: none !important;
+  }
+}
