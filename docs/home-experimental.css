@@ -1201,3 +1201,21 @@ html { scroll-behavior: smooth; }
     box-shadow: none !important;
   }
 }
+
+/* Keep the card's reveal and pointer tilt on one composed transform. */
+.work-card.reveal {
+  transform: perspective(1100px)
+    translate3d(0, var(--card-reveal-y, 30px), 0)
+    rotateX(var(--tilt-y, 0deg))
+    rotateY(var(--tilt-x, 0deg));
+}
+.work-card.reveal.in-view {
+  transform: perspective(1100px)
+    translate3d(0, 0, 0)
+    rotateX(var(--tilt-y, 0deg))
+    rotateY(var(--tilt-x, 0deg));
+}
+@media (max-width: 760px), (hover: none) {
+  .work-card.reveal,
+  .work-card.reveal.in-view { transform: none !important; }
+}
