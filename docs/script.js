@@ -203,7 +203,10 @@ document.querySelectorAll('a[href]').forEach((link) => {
 });
 window.addEventListener('pageshow', () => {
   document.body.classList.remove('is-transitioning');
-  transitionOverlay.classList.remove('is-active');
+  // The same curtain now creates a calm entrance on direct visits and page returns.
+  if (motionReduced) return;
+  transitionOverlay.classList.add('is-active');
+  window.setTimeout(() => transitionOverlay.classList.remove('is-active'), 70);
 });
 
 
