@@ -9,10 +9,23 @@ updateHeader();
 window.addEventListener('scroll',updateHeader,{passive:true});
 
 menuBtn?.addEventListener('click',()=>{
+  if (!menu) return;
   const open=menu.classList.toggle('open');
   document.body.classList.toggle('menu-open',open);
   menuBtn.setAttribute('aria-expanded',String(open));
+  menuBtn.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
   menuBtn.textContent=open?'CLOSE':'MENU';
+});
+
+// Escape closes the mobile navigation and returns focus to its trigger.
+document.addEventListener('keydown',(event)=>{
+  if(event.key!=='Escape' || !menu?.classList.contains('open')) return;
+  menu.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  menuBtn?.setAttribute('aria-expanded','false');
+  menuBtn?.setAttribute('aria-label','Abrir menu');
+  if(menuBtn) menuBtn.textContent='MENU';
+  menuBtn?.focus();
 });
 
 document.querySelectorAll('[data-menu] a').forEach(link=>{
@@ -142,8 +155,14 @@ if (finePointer && !motionReduced) {
   document.querySelectorAll('.pathway-card').forEach((card) => {
     card.addEventListener('pointermove', (event) => {
       const rect = card.getBoundingClientRect();
-      card.style.setProperty('--path-x', ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
-      card.style.setProperty('--path-y', ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+      const x = rect.width ? (event.clientX - rect.left) / rect.width * 100 : 50;
+      const y = rect.height ? (event.clientY - rect.top) / rect.height * 100 : 50;
+      card.style.setProperty('--path-x', x.toFixed(1) + '%');
+      card.style.setProperty('--path-y', y.toFixed(1) + '%');
+    }, { passive: true });
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--path-x', '50%');
+      card.style.setProperty('--path-y', '0%');
     }, { passive: true });
   });
 }
