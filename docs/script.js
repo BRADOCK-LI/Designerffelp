@@ -40,6 +40,9 @@ document.querySelectorAll('[data-menu] a').forEach(link=>{
 const year=document.getElementById('year');
 if(year) year.textContent=new Date().getFullYear();
 
+// Enable reveal styling only after JavaScript is ready, so content stays visible without it.
+document.documentElement.classList.add('js-enabled');
+
 const items=[...document.querySelectorAll('.reveal')];
 if('IntersectionObserver' in window){
   const observer=new IntersectionObserver((entries)=>{
@@ -49,7 +52,7 @@ if('IntersectionObserver' in window){
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:.08,rootMargin:'0px 0px -40px'});
+  },{threshold:.08,rootMargin:'0px 0px -48px 0px'});
   items.forEach(el=>observer.observe(el));
 }else{
   items.forEach(el=>el.classList.add('in-view'));
@@ -80,11 +83,20 @@ if (!motionReduced) {
   }, { passive: true });
   updateProgress();
 
-  // Stagger reveals by a few milliseconds, without delaying the page's initial content.
-  document.querySelectorAll('.section-head.reveal, .work-card.reveal, .service-row.reveal, .about-grid .reveal, .social-links.reveal')
-    .forEach((element, index) => {
-      element.style.setProperty('--reveal-delay', (index % 4) * 65 + 'ms');
+  // Stagger related elements in short, consistent groups.
+  const staggerGroups = [
+    '.section-head.reveal',
+    '.work-grid .work-card.reveal',
+    '.service-list .service-row.reveal',
+    '.about-grid .reveal',
+    '.pathways-grid .pathway-card.reveal',
+    '.social-links.reveal'
+  ];
+  staggerGroups.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      element.style.setProperty('--reveal-delay', Math.min(index, 3) * 70 + 'ms');
     });
+  });
 }
 
 const hero = document.querySelector('.hero');
