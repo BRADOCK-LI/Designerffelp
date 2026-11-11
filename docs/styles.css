@@ -477,9 +477,14 @@ button{font:inherit}
 .footer-meta a:hover{color:#fff}
 
 .reveal{
+  opacity:1;
+  transform:none;
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--reveal-delay,0ms);
+}
+.js-enabled .reveal:not(.in-view){
   opacity:0;
   transform:translateY(22px);
-  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
 }
 .reveal.in-view{opacity:1;transform:none}
 
